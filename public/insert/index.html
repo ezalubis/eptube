@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Video</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<header>
+    <div class="nav container">
+        <a href="../home/index.html" class="logo">
+            <img src="/photos/19573e7e4e186d4d1c6e60115343b73f">EP<span>tube</span>
+        </a>
+        <div class="bilah-navigasi">
+            <a href="../home/index.html" class="navigasi-penunjuk">
+                <i class='bx bx-home'></i>
+                <img src="/photos/1fc13682fbf590efde5cd7563ae4e2df">
+                <span class="navigasi-penunjuk-judul">Home</span>
+            </a>
+            <a href="../profile/index.html" class="navigasi-penunjuk">
+                <i class='bx bxs-hot'></i>
+                <img src="/photos/b2e5f8f71084b191e8abf2bec247e989">
+                <span class="navigasi-penunjuk-judul">Profile</span>
+            </a>
+            <a href="../developer/index.html" class="navigasi-penunjuk">
+                <i class='bx bxs-time'></i>
+                <img src="/photos/74b8a5782baaa2dcce308045c28186fe">
+                <span class="navigasi-penunjuk-judul">Developer</span>
+            </a>
+        </div>
+</header>
+
+<body>
+    <div class="container2">
+        <div>
+            <form name="insert">
+                <h1>Post Your Video <br> In Here</h1>
+                <hr>
+                <label for="">Username</label>
+                <input type="text" name="user" placeholder="User" required autofocus />
+                <label for="">Judul Video</label>
+                <input type="text" name="judul" placeholder="judul" required />
+                <label>
+                    Foto
+                    <input type="file" name="video" />
+                </label>
+                <button>Next</button>
+            </form>
+        </div>
+        <div class="foto">
+            <img src="/videos/bc681fb9a23bc063d6253f1df16a0bd2">
+        </div>
+    </div>
+    <script>
+        document.insert.onsubmit = async(e) => {
+            e.preventDefault();
+            const data = new FormData();
+            data.append("user", document.insert.user.value);
+            data.append("judul", document.insert.judul.value);
+            data.append("video", document.insert.video.files[0]);
+            await fetch("/api/video", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                body: data,
+            });
+            location.href = "../profile/homesetting";
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/insert/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav container">
+            <a href="../../home/index.html" class="logo">
+                <img src="/photos/19573e7e4e186d4d1c6e60115343b73f">EP<span>tube</span>
+            </a>
+            <div class="bilah-navigasi">
+                <a href="../../home/index.html" class="navigasi-penunjuk">
+                    <i class='bx bx-home'></i>
+                    <img src="/photos/1fc13682fbf590efde5cd7563ae4e2df">
+                    <span class="navigasi-penunjuk-judul">Home</span>
+                </a>
+                <a href="../../profile/index.html" class="navigasi-penunjuk">
+                    <i class='bx bxs-hot'></i>
+                    <img src="/photos/b2e5f8f71084b191e8abf2bec247e989">
+                    <span class="navigasi-penunjuk-judul">Profile</span>
+                </a>
+                <a href="../../developer/index.html" class="navigasi-penunjuk">
+                    <i class='bx bxs-time'></i>
+                    <img src="/photos/74b8a5782baaa2dcce308045c28186fe">
+                    <span class="navigasi-penunjuk-judul">Developer</span>
+                </a>
+            </div>
+    </header>
+
+    <body>
+        <div class="container2">
+            <div>
+                <form name="daftar">
+                    <h1>Daftar</h1>
+                    <hr>
+                    <label for="">Username</label>
+                    <input type="text" name="username" placeholder="Username" required autofocus />
+                    <label for="">Password</label>
+                    <input type="password" name="password" placeholder="password" required />
+                    <button>Daftar</button>
+                </form>
+            </div>
+            <div class="foto">
+                <img src="/photos/35426a3e6585774674ded6ff3b6f59d1">
+            </div>
+        </div>
+        <script>
+            document.daftar.onsubmit = async(e) => {
+                e.preventDefault();
+                await fetch("/api/daftar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: document.daftar.username.value,
+                        password: document.daftar.password.value
+                    }),
+                });
+                location.href = "/profile";
+            };
+        </script>
+    </body>
+
+</html>

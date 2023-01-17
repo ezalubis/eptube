@@ -1,0 +1,213 @@
+/* Font Google */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+}
+
+
+/* Untuk variabel */
+
+:root {
+    --warna-utama: rgb(62, 254, 255);
+    --warna-perubahan: rgb(14, 18, 73);
+    --warna-dalam: rgb(0, 17, 255);
+    --warna-konten: #2d2e37;
+    --warna-teks: rgb(252, 182, 193);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.bx {
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1060px;
+    margin: auto;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: var(--warna-dalam);
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+
+/* Logo */
+
+.logo {
+    font-family: 'Noto Serif';
+    font-size: 1.4rem;
+    color: var(--warna-teks);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 auto 0 0;
+}
+
+.logo span {
+    color: var(--warna-utama);
+    font-family: 'Noto Serif';
+}
+
+.logo .bx {
+    font-size: 24px;
+    color: var(--warna-utama);
+}
+
+
+/* Bilah Navigasi */
+
+.bilah-navigasi {
+    position: fixed;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 18px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.4rem;
+}
+
+.navigasi-penunjuk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: blue;
+    font-weight: 600;
+}
+
+.navigasi-penunjuk:hover {
+    color: var(--warna-teks);
+    transition: 0.3s all linear;
+    transform: scale(1.1);
+}
+
+.navigasi-penunjuk:active {
+    color: crimson;
+}
+
+.navigasi-penunjuk .bx {
+    font-size: 1.6rem;
+}
+
+.navigasi-penunjuk-judul {
+    font-size: 0.7rem;
+}
+
+.about {
+    width: 100%;
+    padding: 78px 0px;
+    background-color: #191919;
+}
+
+.about img {
+    height: auto;
+    max-width: 420px;
+}
+
+.about-text {
+    max-width: 500px;
+}
+
+.main {
+    width: 1130px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.about-text h1 {
+    color: white;
+    font-size: 80px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.about-text h5 {
+    color: white;
+    font-size: 25px;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+span {
+    color: #f9004d;
+}
+
+.about-text p {
+    color: hotpink;
+    letter-spacing: 1px;
+    line-height: 28px;
+    font-size: 18px;
+    margin-bottom: 45px;
+}
+
+button {
+    background: #f9004d;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    font-weight: bold;
+    padding: 13px 30px;
+    border-radius: 30px;
+    transition: .4s;
+}
+
+button:hover {
+    background: transparent;
+    border: 2px solid #f9004d;
+    cursor: pointer;
+    color: black;
+}
+
+.footer {
+    text-align: center;
+    color: white;
+    background: #191919;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    font-family: sans-serif;
+}
+
+.sosmed img {
+    height: 50px;
+}
+
+.sosmed ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.sosmed li {
+    display: inline-block;
+    padding: 10px;
+}

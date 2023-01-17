@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPtube Setting</title>
+    <link rel="stylesheet" href="../../home/style.css">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav container">
+            <a href="../../home/index.html" class="logo">
+                <img src="/photos/19573e7e4e186d4d1c6e60115343b73f">EP<span>tube</span>
+            </a>
+            <div class="bilah-navigasi">
+                <a href="../../home/index.html" class="navigasi-penunjuk">
+                    <i class='bx bx-home'></i>
+                    <img src="/photos/1fc13682fbf590efde5cd7563ae4e2df">
+                    <span class="navigasi-penunjuk-judul">Home</span>
+                </a>
+                <a href="../../profile/index.html" class="navigasi-penunjuk">
+                    <i class='bx bxs-hot'></i>
+                    <img src="/photos/b2e5f8f71084b191e8abf2bec247e989">
+                    <span class="navigasi-penunjuk-judul">Profile</span>
+                </a>
+                <a href="../../developer/index.html" class="navigasi-penunjuk">
+                    <i class='bx bxs-time'></i>
+                    <img src="/photos/74b8a5782baaa2dcce308045c28186fe">
+                    <span class="navigasi-penunjuk-judul">Developer</span>
+                </a>
+            </div>
+    </header>
+    <div class="bap"></div>
+    <script>
+        fetch("/api/video", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+
+
+        .then((response) => response.json())
+            .then((data) => {
+                for (let i = 0; i < data.length; i++) {
+
+                    const divv = document.createElement("div");
+
+                    divv.className = 'card';
+                    const video = document.createElement("video");
+                    video.controls = true;
+                    const divv2 = document.createElement("div");
+                    divv.className = 'container2';
+                    const judull = document.createElement("h3");
+                    const user = document.createElement("h4");
+                    const date = document.createElement("h5");
+                    video.src = `/videos/${data[i].video}`;
+                    judull.textContent = data[i].judul;
+                    user.textContent = data[i].user;
+                    date.textContent = data[i].waktu;
+                    divv.appendChild(video);
+                    divv2.appendChild(judull);
+                    divv2.appendChild(user);
+                    divv2.appendChild(date);
+                    divv.appendChild(divv2);
+
+                    const divButton = document.createElement("div");
+                    const Edit = document.createElement("div");
+                    const anchorEdit = document.createElement("a");
+                    anchorEdit.textContent = "Edit";
+                    anchorEdit.href = `/edit?judul=${data[i].judul}`;
+                    Edit.appendChild(anchorEdit);
+                    divButton.appendChild(anchorEdit);
+                    divv.appendChild(Edit);
+
+                    const tdDelete = document.createElement("div");
+                    tdDelete.className = "div-delete";
+                    const buttonDelete = document.createElement("button");
+                    buttonDelete.textContent = "Hapus";
+                    buttonDelete.onclick = () => {
+                        if (
+                            confirm(
+                                `Apakah Anda yakin ingin menghapus ${data[i].user} (${data[i].judul})?`
+                            )
+                        ) {
+                            fetch(`/api/video/${data[i].judul}`, {
+                                method: "DELETE",
+                                headers: {
+                                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                                },
+                            });
+                            location.reload();
+                        }
+                    };
+                    tdDelete.appendChild(buttonDelete);
+                    divButton.appendChild(buttonDelete);
+                    divv.appendChild(tdDelete);
+                    divv.appendChild(divButton);
+                    document.querySelector(".bap").appendChild(divv);
+                }
+            });
+    </script>
+</body>
+
+</html>
